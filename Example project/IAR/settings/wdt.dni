@@ -1,0 +1,89 @@
+[Stack]
+FillEnabled=0
+OverflowWarningsEnabled=1
+WarningThreshold=90
+SpWarningsEnabled=1
+WarnLogOnly=1
+UseTrigger=1
+TriggerName=main
+LimitSize=0
+ByteLimit=50
+[DebugChecksum]
+Checksum=-1501009022
+[CallStack]
+ShowArgs=0
+[Disassembly]
+MixedMode=1
+[CallStackLog]
+Enabled=0
+[DriverProfiling]
+Enabled=0
+Mode=1
+Graph=0
+Symbiont=0
+Exclusions=
+[InterruptLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+SumSortOrder=0
+[DataLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+[Breakpoints2]
+Count=0
+[Interrupts]
+Enabled=1
+[MemoryMap]
+Enabled=0
+Base=0
+UseAuto=0
+TypeViolation=1
+UnspecRange=1
+ActionState=1
+[Trace1]
+Enabled=0
+ShowSource=1
+[array_types]
+Fmt0=u8[128]	4	0
+Fmt1=u8[5]	4	0
+[watch_formats]
+Fmt0={W}0:(u8)254	1	0
+Fmt1={W}0:254	1	0
+Fmt2={W}0:Data	1	0
+Fmt3={W}0:a	4	0
+Fmt4={W}0:crc	4	0
+Fmt5={W}0:crc_read	4	0
+Fmt6={W}0:e.byte	1	0
+Fmt7={W}0:g.byte	1	0
+Fmt8={W}0:id	4	0
+Fmt9={W}0:k	1	0
+Fmt10={W}0:len	3	0
+Fmt11={W}0:payload	3	0
+Fmt12={W}0:read_crc	4	0
+Fmt13={W}0:tmp	4	0
+Fmt14={W}0:z	3	0
+[DataSample]
+LogEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+[Breakpoints]
+Bp0=_ "STD_CODE" "{$PROJ_DIR$\..\STM8L15x_StdPeriph_Driver\src\stm8l15x_clk.c}.156.3" 0 0 0 0 "" 0 ""
+Count=1
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
+[Aliases]
+A0=_ "C:\Users\j3qq4hch\Documents\GitHub\STM8_WS2812B\Example project\STM8S_StdPeriph_Driver\src\stm8s_tim4.c" ""
+Count=1
+SuppressDialog=0
