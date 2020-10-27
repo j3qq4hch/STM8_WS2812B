@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm8s_flash.c
   * @author  MCD Application Team
-  * @version V2.2.0
-  * @date    30-September-2014
+  * @version V2.3.0
+  * @date    16-June-2017
   * @brief   This file contains all the functions for the FLASH peripheral.
    ******************************************************************************
   * @attention
@@ -553,7 +553,7 @@ IN_RAM(FLASH_Status_TypeDef FLASH_WaitForLastOperation(FLASH_MemType_TypeDef FLA
   
   /* Wait until operation completion or write protection page occurred */
 #if defined (STM8S208) || defined(STM8S207) || defined(STM8S007) || defined(STM8S105) || \
-  defined(STM8S005) || defined(STM8AF52Ax) || defined(STM8AF62Ax) || defined(STM8AF626x)  
+    defined (STM8S005) || defined(STM8AF52Ax) || defined(STM8AF62Ax) || defined(STM8AF626x)  
     if(FLASH_MemType == FLASH_MEMTYPE_PROG)
     {
       while((flagstatus == 0x00) && (timeout != 0x00))
@@ -572,7 +572,8 @@ IN_RAM(FLASH_Status_TypeDef FLASH_WaitForLastOperation(FLASH_MemType_TypeDef FLA
         timeout--;
       }
     }
-#else /*STM8S103, STM8S903, STM8AF622x */
+#else /*STM8S103, STM8S001, STM8S903, STM8AF622x */
+  UNUSED(FLASH_MemType);
   while((flagstatus == 0x00) && (timeout != 0x00))
   {
     flagstatus = (uint8_t)(FLASH->IAPSR & (FLASH_IAPSR_EOP | FLASH_IAPSR_WR_PG_DIS));
@@ -600,7 +601,7 @@ IN_RAM(void FLASH_EraseBlock(uint16_t BlockNum, FLASH_MemType_TypeDef FLASH_MemT
   uint32_t startaddress = 0;
   
 #if defined(STM8S105) || defined(STM8S005) || defined(STM8S103) || defined(STM8S003) || \
-  defined (STM8S903) || defined (STM8AF626x) || defined (STM8AF622x)
+    defined(STM8S001) || defined(STM8S903) || defined (STM8AF626x) || defined (STM8AF622x)
     uint32_t PointerAttr  *pwFlash;
 #elif defined (STM8S208) || defined(STM8S207) || defined(STM8S007) || defined (STM8AF62Ax) || defined (STM8AF52Ax) 
   uint8_t PointerAttr  *pwFlash;
@@ -623,7 +624,7 @@ IN_RAM(void FLASH_EraseBlock(uint16_t BlockNum, FLASH_MemType_TypeDef FLASH_MemT
 #if defined (STM8S208) || defined(STM8S207) || defined(STM8S007) || defined (STM8AF62Ax) || defined (STM8AF52Ax)
   pwFlash = (PointerAttr uint8_t *)(MemoryAddressCast)(startaddress + ((uint32_t)BlockNum * FLASH_BLOCK_SIZE));
 #elif defined(STM8S105) || defined(STM8S005) || defined(STM8S103) || defined(STM8S003) || \
-  defined (STM8S903) || defined (STM8AF626x) || defined (STM8AF622x)
+      defined(STM8S001) || defined (STM8S903) || defined (STM8AF626x) || defined (STM8AF622x)
     pwFlash = (PointerAttr uint32_t *)(MemoryAddressCast)(startaddress + ((uint32_t)BlockNum * FLASH_BLOCK_SIZE));
 #endif	/* STM8S208, STM8S207 */
   
@@ -632,7 +633,7 @@ IN_RAM(void FLASH_EraseBlock(uint16_t BlockNum, FLASH_MemType_TypeDef FLASH_MemT
   FLASH->NCR2 &= (uint8_t)(~FLASH_NCR2_NERASE);
   
 #if defined(STM8S105) || defined(STM8S005) || defined(STM8S103) || defined(STM8S003) ||  \
-  defined (STM8S903) || defined (STM8AF626x) || defined (STM8AF622x)
+    defined(STM8S001) || defined(STM8S903) || defined (STM8AF626x) || defined (STM8AF622x)
     *pwFlash = (uint32_t)0;
 #elif defined (STM8S208) || defined(STM8S207) || defined(STM8S007) || defined (STM8AF62Ax) || \
   defined (STM8AF52Ax)
@@ -701,7 +702,6 @@ IN_RAM(void FLASH_ProgramBlock(uint16_t BlockNum, FLASH_MemType_TypeDef FLASH_Me
  #pragma section ()
 #endif /* _COSMIC_ && RAM_EXECUTION */
 
-
 /**
   * @}
   */
@@ -709,6 +709,5 @@ IN_RAM(void FLASH_ProgramBlock(uint16_t BlockNum, FLASH_MemType_TypeDef FLASH_Me
 /**
   * @}
   */
-  
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
