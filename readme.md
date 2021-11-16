@@ -1,5 +1,17 @@
+# RGBW Library for STM8
+---
+
+This library has been adapted to work with RGBW instead of RGB LEDs.
+(Cree XLamp XM-L / INNOLUX IN-PI55QA)
+
+Also see the [STM8S-RGBW-Tutorial](https://github.com/eta-systems/STM8S-RGBW-Tutorial) for an example implementation in IAR workbench.
+
+---
+
+## Original Readme below
+
 This library is based on code found [here](https://www.joaquim.org/electronic/stm8s-discovery/stm8s-discovery-and-ws2812b-rgb-led/). But it has one major difference - it is configured in more clear way. 
-## Usage
+### Usage
 
 Just add files to your project and define pin used to control LEDs and strip length
 For example
